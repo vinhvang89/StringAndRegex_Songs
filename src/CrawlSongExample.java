@@ -9,16 +9,16 @@ public class CrawlSongExample {
         try {
             URL url = new URL("https://www.nhaccuatui.com/bai-hat/nhac-tre-moi.html");
             Scanner scanner = new Scanner(new InputStreamReader(url.openStream()));
-            scanner.useDelimiter("\\z");
+            scanner.useDelimiter("\\Z");
             String content = scanner.next();
             scanner.close();
             content = content.replaceAll("\\n+","");
+            System.out.println(content);
             Pattern pattern = Pattern.compile("name_song\">(.*?)</a>");
             Matcher m = pattern.matcher(content);
             while (m.find()) {
                 System.out.println(m.group(1));
             }
-
         } catch (Exception e){
             System.out.println("Hello boy");
         }
